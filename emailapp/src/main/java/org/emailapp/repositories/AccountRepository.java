@@ -1,6 +1,6 @@
 package org.emailapp.repositories;
 
-import org.emailapp.model.Account;
+import org.emailapp.models.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.stereotype.Repository;
 

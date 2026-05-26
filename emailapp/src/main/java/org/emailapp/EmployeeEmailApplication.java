@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmailAppApplication {
+public class EmployeeEmailApplication {
     public static void main(String[] args) {
-        SpringApplication.run(EmailAppApplication.class, args);
+        SpringApplication.run(EmployeeEmailApplication.class, args);
     }
 }

@@ -1,19 +1,16 @@
 package org.emailapp.services;
 
-import org.emailapp.dto.AccountResponse;
-import org.emailapp.dto.CreateAccountRequest;
-
-import org.emailapp.models.Account;
-import org.emailapp.repositories.AccountRepository;
-
-import org.emailapp.models.Department;
-import org.emailapp.repositories.DepartmentRepository;
-
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-// import org.springframework.beans.factory.annotation.Autowired;
+import org.emailapp.dto.AccountResponse;
+import org.emailapp.dto.CreateAccountRequest;
+import org.emailapp.dto.DepartmentResponse;
+import org.emailapp.models.Account;
+import org.emailapp.models.Department;
+import org.emailapp.repositories.AccountRepository;
+import org.emailapp.repositories.DepartmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 // @Service tells Spring Boot: "this class contains business logic"
 // Spring will create one instance of this class and reuse it everywhere.
@@ -100,13 +97,20 @@ public class AccountService {
 
     // Convert an Account Entity to an AccountResponse DTO
     private AccountResponse toResponse(Account account) {
+        Department dept = account.getDepartment();
+        DepartmentResponse departmentResponse = new DepartmentResponse(
+            dept.getId(),
+            dept.getName(),
+            dept.getAbbreviation(),
+            dept.getNumberOfEmployees()
+        );
         // Response follows the structure defined in AccountResponse record: id, firstName, lastName, email, department, mailboxCapacity, alternativeEmail
         return new AccountResponse(
             account.getId(),
             account.getFirstName(),
             account.getLastName(),
             account.getEmail(),
-            account.getDepartment(), // Include the Department information in the response
+            departmentResponse,
             account.getMailboxCapacity(),
             account.getAlternativeEmail()
         );

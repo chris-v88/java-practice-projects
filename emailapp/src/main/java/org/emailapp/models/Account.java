@@ -1,6 +1,14 @@
 package org.emailapp.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 // This @Entity annotation tells Spring Boot: "make a database table for thsi class"
 // The table will name "accounts" because of the @Table annotation. 
@@ -57,7 +65,7 @@ public class Account {
     public Account() {}
 
     // Constructor to receive the first name and last name
-    public Account(String firstName, String lastName, String department) {
+    public Account(String firstName, String lastName, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
@@ -84,7 +92,7 @@ public class Account {
         return password;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
@@ -122,6 +130,11 @@ public class Account {
     //     return firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + "company.com";
     // }
     // --- These are suppposed tobe in service layer ---
+
+    // Set the email
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     // Set the mailbox capacity
     public void setMailboxCapacity(int capacity) {

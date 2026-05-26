@@ -4,6 +4,7 @@ import org.emailapp.dto.CreateDepartmentRequest;
 import org.emailapp.dto.DepartmentResponse;
 import org.emailapp.models.Department;
 import org.emailapp.repositories.DepartmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
