@@ -38,8 +38,8 @@ public class AccountService {
     public AccountResponse createAccount(CreateAccountRequest request) {
         // Look up the Department from the database using the ID sent by the frontend
         // orElseThrow(): if not found, throw an error immediately with a clear message
-        Department department = departmentRepository.findById(request.departmentId())
-                .orElseThrow(() -> new IllegalArgumentException("Department not found with ID: " + request.departmentId()));
+        Department department = departmentRepository.findByAbbreviation(request.departmentAbbreviation())
+                .orElseThrow(() -> new IllegalArgumentException("Department not found with abbreviation: " + request.departmentAbbreviation()));
 
         // Generate email address using the department abbreviation and a unique number (e.g., "sales001", "sales002")
         // getAbbreviation() is a method in the Department entity that returns the department's abbreviation (e.g., "sales", "hr")

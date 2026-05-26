@@ -8,5 +8,5 @@ import jakarta.validation.constraints.NotBlank;
 public record CreateAccountRequest(
     @NotBlank(message = "First name is required") String firstName,
     @NotBlank(message = "Last name is required") String lastName,
-    @NotBlank(message = "Department is required") Long departmentId
+    @NotBlank(message = "Department abbreviation is required") String departmentAbbreviation
 ) {}
