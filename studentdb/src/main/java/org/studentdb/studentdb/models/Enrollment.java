@@ -10,8 +10,10 @@ public class Enrollment {
     private Long enrollmentId;
 
     @ManyToOne
+    @JoinColumn(name = "studentId")
     private Student student;
 
     @ManyToOne
+    @JoinColumn(name = "courseId")
     private Course course;
 }

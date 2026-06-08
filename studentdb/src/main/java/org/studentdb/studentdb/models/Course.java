@@ -3,6 +3,8 @@ package org.studentdb.studentdb.models;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -19,6 +21,9 @@ public class Course {
 
     @Column(nullable = false)
     private BigDecimal cost;
+
+    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     public Course() {}
 
@@ -45,6 +50,8 @@ public class Course {
     public BigDecimal getCost() {
         return cost;
     }
+
+    public List<Enrollment> getEnrollments() { return enrollments; }
 
     // --- SETTERS ---
 }

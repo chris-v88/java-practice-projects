@@ -49,6 +49,8 @@ public class Account {
     // @JoinColumn(name = "department_id") means:
     //   create a column in the accounts table named "department_id"
     //   that holds the foreign key pointing to the departments table
+    //
+    // fetch = FetchType.LAZY means: "don't load the department data until we actually need it"
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;

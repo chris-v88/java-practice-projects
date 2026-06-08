@@ -3,6 +3,8 @@ package org.studentdb.studentdb.models;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -22,6 +24,11 @@ public class Student {
 
     @Column(nullable = false)
     private BigDecimal balance;
+
+    // we don't use @JoinColumn on here
+    // because the foreign key is not stored in the Student table
+    @OneToMany(mappedBy = "students", fetch = FetchType.LAZY)
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     public Student() {}
 
@@ -52,6 +59,10 @@ public class Student {
 
     public BigDecimal getBalance() {
         return balance;
+    }
+
+    public List<Enrollment> getEnrollments() {
+        return this.enrollments;
     }
 
     // --- SETTERS ---
